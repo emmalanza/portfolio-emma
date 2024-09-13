@@ -1,0 +1,29 @@
+---
+import StudiesItem from './StudiesItem.astro';
+
+const STUDIES = [
+    {
+        date: "2024",
+        title: "CP - DESARROLLO DE APLIACIONES WEB - 600H",
+        description: "TODO",
+    },
+    {
+        date: "2018 / 2020",
+        title: "FP II DESARROLLO DE APLICACIONES MULTIPLATAFORMA",
+        description: "TODO",
+    },
+]
+---
+
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700">
+    {
+        STUDIES.map(s => (
+        <li class="mb-10 ms-6">  
+            <StudiesItem {...s}/>          
+        </li>  
+        ))
+    }                  
+            
+</ol>
+
