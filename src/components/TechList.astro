@@ -1,0 +1,58 @@
+
+---
+import TechItem from './TechItem.astro';
+
+const TECHNOLOGIES = [
+    {
+         title: "HTML",
+         icon: "../../public/svg/logoHTML.svg"
+    },
+    {
+         title: "CSS",
+         icon: "../../public/svg/logoCSS.svg"
+    },
+    {
+         title: "JAVASCRIPT",
+         icon: "../../public/svg/logoJS.svg"
+    },
+    {
+         title: "ASTRO",
+         icon: "../../public/svg/logoAstro.svg"
+    },
+    {
+         title: "TAILWINDCSS",
+         icon: "../../public/svg/logoTailwind.svg"
+    },
+    {
+         title: "MYSQL",
+         icon: "../../public/svg/logoMYSQL.svg"
+    },
+    {
+         title: "PHP",
+         icon: "../../public/svg/logoPHP.svg"
+    },
+    {
+         title: "SCRUM",
+         icon: "../../public/svg/logoSCRUM.svg"
+    },
+    {
+         title: "GITHUB",
+         icon: "../../public/svg/logoGITHUB.svg"
+    },
+]
+---
+
+
+<ul class="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
+   
+        {
+            TECHNOLOGIES.map(t => (
+            <li class="flex items-center justify-center
+            mb-10 ms-6 ">  
+                <TechItem {...t}/>          
+            </li>  
+            ))
+        } 
+
+   
+</ul>

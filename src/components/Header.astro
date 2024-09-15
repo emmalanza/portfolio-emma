@@ -1,10 +1,63 @@
-<header class="flex justify-center items-center py-5 w-[1120px] mx-auto">
+---
+const navItems = [
+    {
+        title: "Educación",
+        url: "#educacion",
+        target: "_self"
+    }, 
+    {
+        title: "Tecnologías",
+        url: "#tecnologias",
+        target: "_self"
+    }, 
+    {
+        title: "Sobre mi",
+        url: "#sobreMi",
+        target: "_self"
+    }, 
+    {
+        title: "Contacto",
+        url: "mailto:emmalanza@hotmail.com",
+        target: "_blank"
+    }
+]
+---
 
-    <nav class="flex flex-row gap-x-10 opacity-80">
-        <a href="#top">Inicio</a>
-        <a href="#educacion">Educación</a>
-        <a href="#sobreMi">Sobre mi</a>
-        <a href="#contacto">Contacto</a>
+
+<header class="fixed top-0 z-10
+flex justify-center items-center py-5 w-full">
+
+    <nav class="flex justify-center items-center px-3
+    text-sm font-medium 
+    rounded-full">
+
+    {
+        navItems.map((link) => (
+            <a class="relative block px-2 py-2 transition hover:text-pink-400"
+            href={link.url} target={link.target} rel="noopener noreferrer">
+                {link.title}
+            </a>
+        ))
+
+    }
+    
     </nav>
 
 </header>
+
+<style>
+    nav {
+        animation: nav-shadown 1s linear both;
+        animation-timeline: scroll();
+        animation-range: 0 100px;
+    }
+
+    @keyframes nav-shadown {
+        0%{
+            
+        }
+        to {
+           @apply shadow-lg ring-1 backdrop-blur ring-pink-100/10; 
+        }
+    }
+</style>

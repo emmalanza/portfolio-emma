@@ -4,7 +4,11 @@ import SectionContainer from '../components/SectionContainer.astro'
 import Badge from '../components/Badge.astro';
 import SocialPill from '../components/SocialPill.astro';
 import Studies from '../components/Studies.astro';
-import StudiesIcon from '../icons/Studies.astro'
+import TechList from '../components/TechList.astro';
+import AboutMe from '../components/AboutMe.astro';
+import StudiesIcon from '../icons/Studies.astro';
+import TechIcon from '../icons/Tech.astro';
+import AboutMeIcon from '../icons/AboutMe.astro';
 import GitHubIcon from '../icons/Github.astro';
 import LinkedInIcon from '../icons/LinkedIn.astro';
 import EmailIcon from '../icons/Email.astro';
@@ -12,14 +16,17 @@ import EmailIcon from '../icons/Email.astro';
 
 <Layout title="Portfolio de Emma - Desarrolladora y Programadora Full Stack"
 		description='Desarrolladora Full Stack en crecimiento'>
-	<main>
+	<main class="px-2">
+
 		<SectionContainer class="pt-44 pb-24">
 
 			<img class="rounded-full w-20 h-20 mb-4"
 			src="../../public/img/YOP.jpeg" alt="Una foto de Emma">
 
-			<h1 class="text-5xl font-bold flex flex-row gap-x-4 pb-10">
-			Hola 🙂 soy Emma
+			<h1 class="text-3xl pb-6
+			md:text-4xl
+			lg:text-5xl font-bold flex flex-row gap-x-4 lg:pb-10">
+			Hola 🤓 soy Emma
 				<a href="https://www.linkedin.com/in/emma-lanza-089861150/" 
 				target="_blank" rel="noopener noreferrer"
 				class="flex justify-center items-center"> 
@@ -27,12 +34,13 @@ import EmailIcon from '../icons/Email.astro';
 				</a>
 			</h1>
 
-			<h2 class="text-2xl text-wrap opacity-80">
+			<h2 class="text-xl
+			lg:text-2xl text-wrap max-w-[700px] opacity-80">
 				<span class="text-pink-300/90">Desarrolladora Full Stack en crecimiento 🌱</span>
 				<br>De Asturias, Epaña.
 			</h2>
 
-			<nav class="flex gap-x-2 mt-8">
+			<nav class="flex flex-wrap gap-x-2 mt-8">
 				<SocialPill href="https://www.linkedin.com/in/emma-lanza-089861150/">
 					<LinkedInIcon/>
 					LinkedIn
@@ -41,7 +49,7 @@ import EmailIcon from '../icons/Email.astro';
 					<GitHubIcon/>
 					GitHub
 				</SocialPill>
-				<SocialPill href="">
+				<SocialPill href="mailto:emmalanza@hotmail.com">
 					<EmailIcon/>
 					emmalanza@hotmail.com
 				</SocialPill>
@@ -51,16 +59,42 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="educacion">
+		<SectionContainer id="educacion" class="pb-24">
 		
-			<h2 class="text-2xl font-semibold mb-6
+			<h3 class="text-xl
+			lg:text-2xl font-semibold mb-6
 			flex items-center gap-x-2">
 				<StudiesIcon/>
 				Educación
-			</h2>
+			</h3>
 			<Studies />
 
 		</SectionContainer>
+
+		<SectionContainer id="tecnologias" class="pb-24">
+		
+			<h3 class="text-xl
+			lg:text-2xl font-semibold mb-6
+			flex items-center gap-x-2">
+				<TechIcon/>
+				Tecnologías
+			</h3>
+			<TechList />
+
+		</SectionContainer>
+
+		<SectionContainer id="sobreMi" class="pb-24">
+
+			<h3 class="text-xl
+			lg:text-2xl font-semibold mb-6
+			flex items-center gap-x-2">
+				<AboutMeIcon/>
+				Sobre mi
+			</h3>
+			<AboutMe />
+
+		</SectionContainer>
+		
 	</main>
 </Layout>
  

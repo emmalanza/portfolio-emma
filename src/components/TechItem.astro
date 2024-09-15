@@ -1,0 +1,14 @@
+---
+interface Props {
+    title: string,
+    icon: string;
+}
+
+const {title, icon } = Astro.props;
+---
+
+<img class="size-5 lg:size-8" 
+src={icon} alt="Una foto de Emma">
+<h4 class="me-4 md:me-6 ">
+    {title}
+</h4>
