@@ -4,9 +4,13 @@ import SectionContainer from '../components/SectionContainer.astro'
 import Badge from '../components/Badge.astro';
 import SocialPill from '../components/SocialPill.astro';
 import Studies from '../components/Studies.astro';
+import WorkExperience  from '../components/WorkExperience.astro';
+import Certifications from '../components/Certifications.astro';
 import TechList from '../components/TechList.astro';
 import AboutMe from '../components/AboutMe.astro';
 import StudiesIcon from '../icons/Studies.astro';
+import ExperienceIcon from '../icons/Experience.astro';
+import CertificationsIcon from '../icons/Certifications.astro';
 import TechIcon from '../icons/Tech.astro';
 import AboutMeIcon from '../icons/AboutMe.astro';
 import GitHubIcon from '../icons/Github.astro';
@@ -16,7 +20,7 @@ import EmailIcon from '../icons/Email.astro';
 
 <Layout title="Portfolio de Emma - Desarrolladora y Programadora Full Stack"
 		description='Desarrolladora Full Stack en crecimiento'>
-	<main class="px-2">
+	<main class="px-4 md:px-12">
 
 		<SectionContainer class="pt-44 pb-24">
 
@@ -40,7 +44,7 @@ import EmailIcon from '../icons/Email.astro';
 				<br>De Asturias, Epaña.
 			</h2>
 
-			<nav class="flex flex-wrap gap-x-2 mt-8">
+			<nav class="flex flex-wrap gap-x-6 mt-8">
 				<SocialPill href="https://www.linkedin.com/in/emma-lanza-089861150/">
 					<LinkedInIcon/>
 					LinkedIn
@@ -59,7 +63,19 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="educacion" class="pb-24">
+		<SectionContainer id="experiencia" class="pb-20">
+		
+			<h3 class="text-xl
+			lg:text-2xl font-semibold mb-6
+			flex items-center gap-x-2">
+				<ExperienceIcon/>
+				Experiencia
+			</h3>
+			<WorkExperience />
+
+		</SectionContainer>
+
+		<SectionContainer id="educacion" class="pb-20">
 		
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
@@ -71,7 +87,19 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="tecnologias" class="pb-24">
+		<SectionContainer id="certificaciones" class="pb-20">
+		
+			<h3 class="text-xl
+			lg:text-2xl font-semibold mb-6
+			flex items-center gap-x-2">
+				<CertificationsIcon/>
+				Certificaciones
+			</h3>
+			<Certifications />
+
+		</SectionContainer>
+
+		<SectionContainer id="tecnologias" class="pb-20">
 		
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
@@ -83,7 +111,7 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="sobreMi" class="pb-24">
+		<SectionContainer id="sobreMi" class="pb-20">
 
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6

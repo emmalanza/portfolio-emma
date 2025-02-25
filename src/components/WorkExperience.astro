@@ -1,0 +1,39 @@
+---
+import ExperienceItem  from './ListItem.astro';
+
+const EXPERIENCE = [
+    {
+        date: "Diciembre 2024 - Actualidad",
+        title: "Prácticas Desarrollo Web en Factoría F5",
+        description: "Experiencia en desarrollo web, participando en proyectos reales bajo metodologías Agile y Scrum. He asumido roles como SCRUM Master, gestionando tareas y entregas."
+    },
+    {
+        date: "Noviembre 2024 - Diciembre 2024 / 2 meses",
+        title: "Prácticas Desarrollo Web en Conastec",
+        description: "Diseño de landing pages en WordPress con Avada, integrando plugins para SEO, análisis, formularios y diseño responsive.",
+    },
+    {
+        date: "Junio 2021 - Agosto 2023 / 2 años y 3 meses",
+        title: "Auxiliar administrativa en Ipalux Instalaciones S.L.",
+        description: "Facturación, cobros/pagos, conciliación bancaria, gestión documental. ",
+    },
+    {
+        date: "Junio 2020 - Diciembre 2020 / 7 meses",
+        title: "Desarrolladora de aplicaciones en Canon Bussiness Center Oviedo",
+        description: "Desarrollo de un sistema de gestión con Angular y TypeScript, contribuyendo a su diseño y funcionalidad",
+    },
+]
+---
+
+
+<ol class="relative border-s border-gray-200 ml-3">
+    {
+        EXPERIENCE.map(e => (
+        <li class="mb-10 ms-6">  
+            <ExperienceItem {...e}/>          
+        </li>  
+        ))
+    }                  
+            
+</ol>
+

@@ -16,8 +16,16 @@ const TECHNOLOGIES = [
          icon: "/svg/logoJS.svg"
     },
     {
+         title: "TYPESCRIPT",
+         icon: "/svg/logoTypescript.svg"
+    },
+    {
          title: "ASTRO",
          icon: "/svg/logoAstro.svg"
+    },
+    {
+         title: "REACT",
+         icon: "/svg/logoReact.svg"
     },
     {
          title: "TAILWINDCSS",
@@ -28,8 +36,8 @@ const TECHNOLOGIES = [
          icon: "/svg/logoMYSQL.svg"
     },
     {
-         title: "PHP",
-         icon: "/svg/logoPHP.svg"
+         title: "JAVA",
+         icon: "/svg/logoJava.svg"
     },
     {
          title: "SCRUM",
@@ -39,20 +47,55 @@ const TECHNOLOGIES = [
          title: "GITHUB",
          icon: "/svg/logoGITHUB.svg"
     },
+    {
+         title: "JIRA",
+         icon: "/svg/logoJira.svg"
+    },
 ]
 ---
 
 
-<ul class="flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
+<div class="carousel-container">
+     <ul class="carousel-track">
+       {TECHNOLOGIES.concat(TECHNOLOGIES).map((t) => (
+         <li class="carousel-item">  
+           <TechItem {...t}/>          
+         </li>  
+       ))}
+     </ul>
+</div>
    
-        {
-            TECHNOLOGIES.map(t => (
-            <li class="flex items-center justify-center
-            mb-10 ms-6 ">  
-                <TechItem {...t}/>          
-            </li>  
-            ))
-        } 
-
+ <style>
+   /* Contenedor principal del carrusel */
+   .carousel-container {
+     width: 100%;
+     overflow: hidden;
+     position: relative;
+   }
    
-</ul>
+   /* Pista del carrusel */
+   .carousel-track {
+     display: flex;
+     gap: 2rem;
+     animation: scroll 40s linear infinite;
+     width: max-content; /* Asegura que la lista sea suficientemente ancha */
+   }
+   
+   /* Elementos individuales */
+   .carousel-item {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     min-width: 100px; /* Ajusta el tamaño de cada ítem según necesites */
+   }
+   
+   /* Animación infinita */
+   @keyframes scroll {
+     from {
+       transform: translateX(0);
+     }
+     to {
+       transform: translateX(-50%);
+     }
+   }
+</style>

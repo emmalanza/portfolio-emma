@@ -1,7 +1,15 @@
 ---
-import StudiesItem from './StudiesItem.astro';
+import StudiesItem from './ListItem.astro';
 
 const STUDIES = [
+    {
+        date: "2024 - 2025",
+        title: "BOOTCAMP DESARROLLO WEB FULL STACK",
+        description: {
+            FRONTEND: "HTML5, CSS3, JAVASCRIPT, TYPESCRIPT, REACT, TAILWINDCSS",
+        }
+        ,
+    },
     {
         date: "2024",
         title: "CP - DESARROLLO DE APLICACIONES WEB - 600H",
@@ -12,11 +20,16 @@ const STUDIES = [
         title: "FP II DESARROLLO DE APLICACIONES MULTIPLATAFORMA",
         description: "Desarrollar aplicaciones multiplataforma con acceso a bases de datos utilizando lenguajes, librerías y herramientas adecuados a las especificaciones.",
     },
+    {
+        date: "2016 / 2018",
+        title: "FP II AUXILIAR ADMINISTRATIVO Y SECRETARIADO",
+        description: "Administración de sistemas de información y archivos, gestión de documentos, control y desarrollo de los recursos humanos",
+    },
 ]
 ---
 
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">
+<ol class="relative border-s border-gray-200 ml-3">
     {
         STUDIES.map(s => (
         <li class="mb-10 ms-6">  

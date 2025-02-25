@@ -1,8 +1,18 @@
 ---
 const navItems = [
     {
+        title: "Experiencia",
+        url: "#experiencia",
+        target: "_self"
+    }, 
+    {
         title: "Educación",
         url: "#educacion",
+        target: "_self"
+    }, 
+    {
+        title: "Certificaciones",
+        url: "#certificaciones",
         target: "_self"
     }, 
     {
@@ -21,38 +31,65 @@ const navItems = [
         target: "_blank"
     }
 ]
+
+let menuOpen = false; // Variable para manejar el estado del menú
 ---
 
+<header class="fixed top-0 z-10 
+flex justify-end items-end md:justify-center md:items-center py-5 md:py-0 w-full">
 
-<header class="fixed top-0 z-10
-flex justify-center items-center py-5 w-full">
+    <!-- Botón de menú hamburguesa -->
+    <button 
+    id="hamburgerButton" 
+    class="md:hidden flex flex-col items-end space-y-1 z-30 px-4 backdrop-blur-xl"
+    aria-label="Abrir menú"
+    >
+    <span class="block w-6 h-0.5 bg-gray-900"></span>
+    <span class="block w-6 h-0.5 bg-gray-900"></span>
+    <span class="block w-6 h-0.5 bg-gray-900"></span>
+    </button>
 
-    <nav class="flex justify-center items-center px-3
-    text-sm font-medium 
-    rounded-full">
+    <!-- Menú -->
+    <nav id="navMenu"
+    class={`md:flex ${menuOpen ? "block" : "hidden"} 
+    pt-16 md:pt-0 md:mt-4
+    top-0 left-0 right-0 backdrop-blur-xl h-screen 
+    md:block absolute md:static md:h-auto 
+    md:bg-transparent md:backdrop-blur-none transition-all md:rounded-full`}>
 
     {
         navItems.map((link) => (
-            <a class="relative block px-2 py-2 transition hover:text-pink-400"
+            <a class="mt-8 mb-8 md:mt-0 md:mb-0
+            relative block px-2 py-2 transition hover:text-pink-400"
             href={link.url} target={link.target} rel="noopener noreferrer">
                 {link.title}
             </a>
         ))
 
     }
-    
     </nav>
 
 </header>
 
-<style>
-    nav {
-        animation: nav-shadown 1s linear both;
-        animation-timeline: scroll();
-        animation-range: 0 100px;
-    }
+<script>
+  // Obtén el botón hamburguesa y el menú
+  const hamburgerButton = document.getElementById('hamburgerButton');
+  const navMenu = document.getElementById('navMenu');
 
-    @keyframes nav-shadown {
+  // Escucha el evento de clic para abrir/cerrar el menú
+  hamburgerButton?.addEventListener('click', () => {
+    navMenu?.classList.toggle('hidden'); // Alterna la clase 'hidden' para mostrar/ocultar el menú
+  });
+</script>
+
+<style>
+  nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
         0%{
             
         }
@@ -60,4 +97,10 @@ flex justify-center items-center py-5 w-full">
            @apply shadow-lg ring-1 backdrop-blur ring-pink-100/10; 
         }
     }
+
+  /* Menú en móviles */
+  nav {
+    transition: transform 0.3s ease-in-out;
+  }
+
 </style>
