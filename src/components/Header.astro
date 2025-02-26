@@ -35,31 +35,34 @@ const navItems = [
 let menuOpen = false; // Variable para manejar el estado del menú
 ---
 
-<header class="fixed top-0 z-10 flex justify-end items-end md:justify-center md:items-center py-5 md:py-0 w-full">
+<header class="fixed top-0 z-10 flex justify-between items-center md:justify-center p-5 md:p-0 w-full">
 
     <!-- Botón de menú hamburguesa -->
     <button 
     id="hamburgerButton" 
-    class="md:hidden flex flex-col items-end space-y-1 z-30 px-4"
+    class="md:hidden flex flex-col space-y-1 z-30"
     aria-label="Abrir menú"
     >
-    <span class="block w-6 h-0.5 bg-white"></span>
-    <span class="block w-6 h-0.5 bg-white"></span>
-    <span class="block w-6 h-0.5 bg-white"></span>
+    <span class="block w-6 h-0.5 dark:bg-white bg-black"></span>
+    <span class="block w-6 h-0.5 dark:bg-white bg-black"></span>
+    <span class="block w-6 h-0.5 dark:bg-white bg-black"></span>
     </button>
+
+
 
     <!-- Menú -->
     <nav id="navMenu"
     class={`md:flex ${menuOpen ? "block" : "hidden"} 
-    pt-16 md:pt-0 md:mt-4
+    absolute flex flex-col 
+    pt-28 md:pt-0 md:mt-4
     top-0 left-0 right-0 backdrop-blur-xl h-screen 
-    md:block absolute md:static md:h-auto 
+    md:block md:flex-row md:gap-0 md:static md:h-auto 
     md:bg-transparent md:backdrop-blur-none transition-all md:rounded-full`}>
 
     {
         navItems.map((link) => (
-            <a class="mt-8 mb-8 md:mt-0 md:mb-0
-            relative block px-2 py-2 transition hover:text-pink-400 text-sm font-thin"
+            <a class="mt-4 mb-4 md:mt-0 md:mb-0
+            px-2 py-2 transition hover:text-pink-light text-sm font-thin"
             href={link.url} target={link.target} rel="noopener noreferrer">
                 {link.title}
             </a>
@@ -68,30 +71,87 @@ let menuOpen = false; // Variable para manejar el estado del menú
     }
     </nav>
 
+    <button id="toggle-theme" 
+    class="rounded-full md:absolute 
+    md:right-9 md:top-3 
+    backdrop-blur-sm ">
+      <img src="" alt="Toggle icon">
+    </button>
+
+
+
 </header>
 
 <script>
-  // Obtén el botón hamburguesa y el menú
+ 
   const hamburgerButton = document.getElementById('hamburgerButton');
   const navMenu = document.getElementById('navMenu');
 
-  if(navMenu){
+  if(navMenu && hamburgerButton){
+
     const navLinks: NodeListOf<HTMLAnchorElement> = navMenu.querySelectorAll('a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-        navMenu?.classList.add('hidden'); // Oculta el menú
+        navMenu.classList.add('hidden'); 
         });
     });
+
+    hamburgerButton.addEventListener('click', () => {
+    navMenu.classList.toggle('hidden'); 
+    });
+
   } 
  
-
-  // Escucha el evento de clic para abrir/cerrar el menú
-  hamburgerButton?.addEventListener('click', () => {
-    navMenu?.classList.toggle('hidden'); // Alterna la clase 'hidden' para mostrar/ocultar el menú
-  });
-
+  const toggleButton = document.getElementById("toggle-theme");
+  const body = document.body;
+  const bgLight = document.getElementById('bg-light');
+  const bgDark = document.getElementById('bg-dark');
 
   
+  if(toggleButton){
+
+    function switchTheme() {
+        if(bgLight && bgDark && toggleButton){
+            const currentTheme = localStorage.getItem("theme");
+            if (currentTheme === "dark") {
+            bgLight.classList.add("hidden");
+            bgDark.classList.remove("hidden");
+            body.classList.add("dark");
+            body.style.background = "#0a0a0a";
+            body.style.color = "#ffffff";
+            const img = toggleButton.querySelector('img');
+            if(img)
+            img.src = "/svg/sun.svg";
+           const banner = document.getElementById('banner') as HTMLImageElement;
+           if(banner)
+           banner.src = "/img/banner-dark.png";
+          } else {
+            bgLight.classList.remove("hidden");
+            bgDark.classList.add("hidden");
+            body.classList.remove("dark");
+            body.style.background = "#ffffff";
+            body.style.color = "#0a0a0a";
+            const img = toggleButton.querySelector('img');
+            if(img)
+            img.src = "/svg/moon.svg";
+            const banner = document.getElementById('banner') as HTMLImageElement;
+            if(banner)
+            banner.src = "/img/banner-light.png";
+          }
+        }
+      }
+    switchTheme();
+
+    toggleButton.addEventListener("click", () => {
+      body.classList.toggle("dark"); 
+      const newTheme = body.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      switchTheme();
+    });  
+
+  }
+
+
 </script>
 
 <style>
