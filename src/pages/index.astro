@@ -8,6 +8,7 @@ import WorkExperience  from '../components/WorkExperience.astro';
 import Certifications from '../components/Certifications.astro';
 import TechList from '../components/TechList.astro';
 import AboutMe from '../components/AboutMe.astro';
+import Separator from '../components/Separator.astro';
 import StudiesIcon from '../icons/Studies.astro';
 import ExperienceIcon from '../icons/Experience.astro';
 import CertificationsIcon from '../icons/Certifications.astro';
@@ -16,35 +17,45 @@ import AboutMeIcon from '../icons/AboutMe.astro';
 import GitHubIcon from '../icons/Github.astro';
 import LinkedInIcon from '../icons/LinkedIn.astro';
 import EmailIcon from '../icons/Email.astro';
+
+import "aos/dist/aos.css"; 
+
 ---
 
 <Layout title="Portfolio de Emma - Desarrolladora y Programadora Full Stack"
 		description='Desarrolladora Full Stack en crecimiento'>
-	<main class="px-4 md:px-12">
 
-		<SectionContainer class="pt-44 pb-24">
+	<script>
+		import { aosInit } from "../js/aos";
+		aosInit();
+		document.addEventListener("astro:after-swap", aosInit);
+	</script>
+
+	<main>
+
+		<SectionContainer class="pt-24 md:pt-40 md:pb-40 pb-24">
 
 			<img class="rounded-full w-20 h-20 mb-4"
-			src="/img/YOP.jpeg" alt="Una foto de Emma">
+			src="/img/YOP.jpeg" alt="Una foto de Emma" data-aos="zoom-in" data-aos-delay="300">
 
 			<h1 class="text-3xl pb-6
 			md:text-4xl
-			lg:text-5xl font-bold flex flex-row gap-x-4 lg:pb-10">
-			Hola 🤓 soy Emma
+			lg:text-5xl font-bold flex flex-col md:flex-row gap-4 lg:pb-10"  data-aos="zoom-in" data-aos-delay="200" >
+				Hola 🤓 soy Emma
 				<a href="https://www.linkedin.com/in/emma-lanza-089861150/" 
 				target="_blank" rel="noopener noreferrer"
-				class="flex justify-center items-center"> 
+				class="flex md:justify-center md:items-center"> 
 					<Badge>Disponible para trabajar </Badge>
 				</a>
 			</h1>
 
-			<h2 class="text-xl
-			lg:text-2xl text-wrap max-w-[700px] opacity-80">
-				<span class="text-pink-300/90">Desarrolladora Full Stack en crecimiento 🌱</span>
-				<br>De Asturias, Epaña.
+			<h2 class="text-wrap max-w-[700px] opacity-80">
+				<span class="text-pink-300/90 text-xl md:text-2xl">Desarrolladora Full Stack en crecimiento 🌱</span>
+				<br>
+				<span class="text-md md:text-lg">De Asturias, Epaña.</spanc>
 			</h2>
 
-			<nav class="flex flex-wrap gap-x-6 mt-8">
+			<nav class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 ">
 				<SocialPill href="https://www.linkedin.com/in/emma-lanza-089861150/">
 					<LinkedInIcon/>
 					LinkedIn
@@ -63,7 +74,8 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="experiencia" class="pb-20">
+		<SectionContainer id="experiencia" class="pb-20 relative">
+			<div class="hidden lg:block section-title">EXPERIENCIA</div>
 		
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
@@ -75,7 +87,8 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="educacion" class="pb-20">
+		<SectionContainer id="educacion" class="pb-20 relative">
+			<div class="hidden lg:block section-title">EDUCACIÓN</div>
 		
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
@@ -87,7 +100,8 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="certificaciones" class="pb-20">
+		<SectionContainer id="certificaciones" class="pb-20 relative">
+			<div class="hidden lg:block section-title">CERTIFICACIONES</div>
 		
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
@@ -99,8 +113,8 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="tecnologias" class="pb-20">
-		
+		<SectionContainer id="tecnologias" class="pb-20 relative">
+			
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
 			flex items-center gap-x-2">
@@ -111,7 +125,7 @@ import EmailIcon from '../icons/Email.astro';
 
 		</SectionContainer>
 
-		<SectionContainer id="sobreMi" class="pb-20">
+		<SectionContainer id="sobreMi" class="pb-20 relative">
 
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
@@ -127,4 +141,17 @@ import EmailIcon from '../icons/Email.astro';
 </Layout>
  
 
- 
+ <style>
+	.section-title {
+		font-size: 7rem;
+		font-weight: bold;
+		color: rgba(255, 255, 255, 0.02);
+		text-align: center;
+		position: absolute;
+		top: -50px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: -1;
+	}
+
+ </style>

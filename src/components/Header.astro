@@ -35,18 +35,17 @@ const navItems = [
 let menuOpen = false; // Variable para manejar el estado del menú
 ---
 
-<header class="fixed top-0 z-10 
-flex justify-end items-end md:justify-center md:items-center py-5 md:py-0 w-full">
+<header class="fixed top-0 z-10 flex justify-end items-end md:justify-center md:items-center py-5 md:py-0 w-full">
 
     <!-- Botón de menú hamburguesa -->
     <button 
     id="hamburgerButton" 
-    class="md:hidden flex flex-col items-end space-y-1 z-30 px-4 backdrop-blur-xl"
+    class="md:hidden flex flex-col items-end space-y-1 z-30 px-4"
     aria-label="Abrir menú"
     >
-    <span class="block w-6 h-0.5 bg-gray-900"></span>
-    <span class="block w-6 h-0.5 bg-gray-900"></span>
-    <span class="block w-6 h-0.5 bg-gray-900"></span>
+    <span class="block w-6 h-0.5 bg-white"></span>
+    <span class="block w-6 h-0.5 bg-white"></span>
+    <span class="block w-6 h-0.5 bg-white"></span>
     </button>
 
     <!-- Menú -->
@@ -60,7 +59,7 @@ flex justify-end items-end md:justify-center md:items-center py-5 md:py-0 w-full
     {
         navItems.map((link) => (
             <a class="mt-8 mb-8 md:mt-0 md:mb-0
-            relative block px-2 py-2 transition hover:text-pink-400"
+            relative block px-2 py-2 transition hover:text-pink-400 text-sm font-thin"
             href={link.url} target={link.target} rel="noopener noreferrer">
                 {link.title}
             </a>
@@ -76,10 +75,23 @@ flex justify-end items-end md:justify-center md:items-center py-5 md:py-0 w-full
   const hamburgerButton = document.getElementById('hamburgerButton');
   const navMenu = document.getElementById('navMenu');
 
+  if(navMenu){
+    const navLinks: NodeListOf<HTMLAnchorElement> = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+        navMenu?.classList.add('hidden'); // Oculta el menú
+        });
+    });
+  } 
+ 
+
   // Escucha el evento de clic para abrir/cerrar el menú
   hamburgerButton?.addEventListener('click', () => {
     navMenu?.classList.toggle('hidden'); // Alterna la clase 'hidden' para mostrar/ocultar el menú
   });
+
+
+  
 </script>
 
 <style>
