@@ -29,8 +29,8 @@ const { title, description } = Astro.props;
 		bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
 
 		<div id="bg-light"
-		class="absolute top-0 -z-10 h-screen w-screen bg-white">
-			<div class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
+		class="absolute top-0 -z-10 h-screen w-screen bg-white max-w-[1440px]">
+			<div class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(248,161,251,0.55)] opacity-50 blur-[80px]"></div>
 		</div>
 
 		<Header/>
@@ -38,6 +38,7 @@ const { title, description } = Astro.props;
 		<Footer/>
 	</body>
 </html>
+
 <style is:global>
 
 	html {
@@ -56,4 +57,5 @@ const { title, description } = Astro.props;
 			scroll-behavior: auto;
 		}
 	}
+
 </style>
