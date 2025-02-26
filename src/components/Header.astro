@@ -84,73 +84,87 @@ let menuOpen = false; // Variable para manejar el estado del menú
 
 <script>
  
-  const hamburgerButton = document.getElementById('hamburgerButton');
-  const navMenu = document.getElementById('navMenu');
-
-  if(navMenu && hamburgerButton){
-
-    const navLinks: NodeListOf<HTMLAnchorElement> = navMenu.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-        navMenu.classList.add('hidden'); 
-        });
-    });
-
-    hamburgerButton.addEventListener('click', () => {
-    navMenu.classList.toggle('hidden'); 
-    });
-
-  } 
- 
+ document.addEventListener("DOMContentLoaded", () => {
+  const hamburgerButton = document.getElementById("hamburgerButton");
+  const navMenu = document.getElementById("navMenu");
   const toggleButton = document.getElementById("toggle-theme");
   const body = document.body;
+  const banner = document.getElementById("banner") as HTMLImageElement;
   const bgLight = document.getElementById('bg-light');
   const bgDark = document.getElementById('bg-dark');
 
-  
-  if(toggleButton){
+  if (navMenu && hamburgerButton) {
+    navMenu.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", () => navMenu.classList.add("hidden"))
+    );
+    hamburgerButton.addEventListener("click", () =>
+      navMenu.classList.toggle("hidden")
+    );
+  }
 
-    function switchTheme() {
-        if(bgLight && bgDark && toggleButton){
-            const currentTheme = localStorage.getItem("theme");
-            if (currentTheme === "dark") {
-            bgLight.classList.add("hidden");
-            bgDark.classList.remove("hidden");
-            body.classList.add("dark");
-            body.style.background = "#0a0a0a";
-            body.style.color = "#ffffff";
-            const img = toggleButton.querySelector('img');
-            if(img)
-            img.src = "/svg/sun.svg";
-           const banner = document.getElementById('banner') as HTMLImageElement;
-           if(banner)
-           banner.src = "/img/banner-dark.png";
-          } else {
-            bgLight.classList.remove("hidden");
-            bgDark.classList.add("hidden");
-            body.classList.remove("dark");
-            body.style.background = "#ffffff";
-            body.style.color = "#0a0a0a";
-            const img = toggleButton.querySelector('img');
-            if(img)
-            img.src = "/svg/moon.svg";
-            const banner = document.getElementById('banner') as HTMLImageElement;
-            if(banner)
-            banner.src = "/img/banner-light.png";
-          }
-        }
+  function switchTheme(theme: string) {
+    const isDark = theme === "dark";
+    localStorage.setItem("theme", theme);
+
+    body.classList.toggle("dark", isDark);
+    body.style.background = isDark ? "#0a0a0a" : "#ffffff";
+    body.style.color = isDark ? "#ffffff" : "#0a0a0a";
+
+    if (bgLight && bgDark) {
+      if(theme === "dark") {
+        bgLight.classList.add("hidden");
+        bgDark.classList.remove("hidden");
+      } else {
+        bgLight.classList.remove("hidden");
+        bgDark.classList.add("hidden");
       }
-    switchTheme();
+    }
+    
+    if (bgDark) {
+      bgDark.classList.toggle("opacity-0", !isDark);
+    }
 
-    toggleButton.addEventListener("click", () => {
-      body.classList.toggle("dark"); 
-      const newTheme = body.classList.contains("dark") ? "dark" : "light";
-      localStorage.setItem("theme", newTheme);
-      switchTheme();
-    });  
+    if (toggleButton) {
+      const img = toggleButton.querySelector("img");
+      if (img) img.src = isDark ? "/svg/sun.svg" : "/svg/moon.svg";
+    }
+
+
+    if (banner) {
+      const newSrc = isDark ? "/img/banner-dark.png" : "/img/banner-light.png";
+      const imgPreload = new Image();
+      
+      imgPreload.src = newSrc;
+      imgPreload.onload = () => {
+        banner.style.transition = "opacity 0.3s ease-in-out";
+        banner.style.opacity = "0"; 
+
+        setTimeout(() => {
+          banner.src = newSrc;
+
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              banner.style.opacity = "1"; 
+            }, 150);
+          });
+          
+        }, 350); 
+      };
+    }
 
   }
 
+  const currentTheme = localStorage.getItem("theme") || "light";
+  switchTheme(currentTheme);
+
+  if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+      const newTheme = body.classList.contains("dark") ? "light" : "dark";
+      switchTheme(newTheme);
+    });
+  }
+
+});
 
 </script>
 

@@ -25,8 +25,8 @@ md:-start-4 bg-pink-light">
         typeof description === "string" ? (description) : (
             <ul>
                 {Object.entries(description).map(([key, value]) => (
-                    <li>
-                        <strong>{key}:</strong> {value}
+                    <li class="text-gray-500">
+                        <strong class="text-gray-600">{key}:</strong> {value}
                     </li>
                 ))}
             </ul>
