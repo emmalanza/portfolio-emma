@@ -8,12 +8,6 @@ import WorkExperience  from '../components/WorkExperience.astro';
 import Certifications from '../components/Certifications.astro';
 import TechList from '../components/TechList.astro';
 import AboutMe from '../components/AboutMe.astro';
-import Separator from '../components/Separator.astro';
-import StudiesIcon from '../icons/Studies.astro';
-import ExperienceIcon from '../icons/Experience.astro';
-import CertificationsIcon from '../icons/Certifications.astro';
-import TechIcon from '../icons/Tech.astro';
-import AboutMeIcon from '../icons/AboutMe.astro';
 import GitHubIcon from '../icons/Github.astro';
 import LinkedInIcon from '../icons/LinkedIn.astro';
 import EmailIcon from '../icons/Email.astro';
@@ -31,28 +25,29 @@ import "aos/dist/aos.css";
 		document.addEventListener("astro:after-swap", aosInit);
 	</script>
 
-	<main>
+	<SectionContainer class="mt-20 mb-28">
 
-		<SectionContainer class="pt-24 md:pt-40 md:pb-40 pb-24">
+		<div  data-aos="flip-left" data-aos-delay="200">
+			<img id="banner" src="" alt="Banner" loading="lazy" class="relative w-full">
+			<img class="absolute md:-bottom-16 md:left-10 -bottom-8 left-5
+			md:border-4 border-2 border-white
+			rounded-full md:w-36 md:h-36 w-16 h-16"
+			src="/img/YOP.jpeg" alt="Una foto de Emma" loading="lazy">
+			<a href="https://www.linkedin.com/in/emma-lanza-089861150/" 
+			target="_blank" rel="noopener noreferrer"
+			class="absolute md:-bottom-12 md:right-10 -bottom-8 right-5"> 
+				<Badge>Disponible para trabajar </Badge>
+			</a>
+		</div>
 
-			<img class="rounded-full w-20 h-20 mb-4"
-			src="/img/YOP.jpeg" alt="Una foto de Emma" data-aos="zoom-in" data-aos-delay="300">
-
-			<h1 class="text-3xl pb-6
-			md:text-4xl
-			lg:text-5xl font-bold flex flex-col md:flex-row gap-4 lg:pb-10"  data-aos="zoom-in" data-aos-delay="200" >
-				Hola 🤓 soy Emma
-				<a href="https://www.linkedin.com/in/emma-lanza-089861150/" 
-				target="_blank" rel="noopener noreferrer"
-				class="flex md:justify-center md:items-center"> 
-					<Badge>Disponible para trabajar </Badge>
-				</a>
+		<div class="mt-20 md:ml-10" data-aos="flip-down" data-aos-delay="600">
+			<h1 class="text-3xl md:text-4xl ml-5 md:ml-0 font-bold">
+				Emma Lanza
 			</h1>
-
-			<h2 class="text-wrap max-w-[700px] opacity-80">
-				<span class="text-pink-300/90 text-xl md:text-2xl">Desarrolladora Full Stack en crecimiento 🌱</span>
+			<h2 class="text-wrap opacity-80 ml-5 md:ml-0">
+				<span class="text-pink-dark text-md">Desarrolladora Full Stack en crecimiento 🌱</span>
 				<br>
-				<span class="text-md md:text-lg">De Asturias, Epaña.</spanc>
+				<span class="text-sm">De Asturias, Epaña.</spanc>
 			</h2>
 
 			<nav class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 ">
@@ -69,10 +64,13 @@ import "aos/dist/aos.css";
 					emmalanza@hotmail.com
 				</SocialPill>
 				
-		
-			</nav>
+			</nav> 
 
-		</SectionContainer>
+		</div>
+
+	</SectionContainer>
+
+	<main class="md:ml-10">
 
 		<SectionContainer id="experiencia" class="pb-20 relative">
 			<div class="hidden lg:block section-title">EXPERIENCIA</div>
@@ -80,7 +78,8 @@ import "aos/dist/aos.css";
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
 			flex items-center gap-x-2">
-				<ExperienceIcon/>
+				<img src="/svg/work.svg" alt="Icono" 
+				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
 				Experiencia
 			</h3>
 			<WorkExperience />
@@ -93,7 +92,8 @@ import "aos/dist/aos.css";
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
 			flex items-center gap-x-2">
-				<StudiesIcon/>
+				<img src="/svg/studies.svg" alt="Icono" 
+				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
 				Educación
 			</h3>
 			<Studies />
@@ -106,7 +106,8 @@ import "aos/dist/aos.css";
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
 			flex items-center gap-x-2">
-				<CertificationsIcon/>
+				<img src="/svg/certificate.svg" alt="Icono" 
+				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
 				Certificaciones
 			</h3>
 			<Certifications />
@@ -114,11 +115,12 @@ import "aos/dist/aos.css";
 		</SectionContainer>
 
 		<SectionContainer id="tecnologias" class="pb-20 relative">
-			
+			<div class="hidden lg:block section-title">TECNOLOGÍAS</div>
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
 			flex items-center gap-x-2">
-				<TechIcon/>
+				<img src="/svg/tech.svg" alt="Icono" 
+				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
 				Tecnologías
 			</h3>
 			<TechList />
@@ -126,15 +128,15 @@ import "aos/dist/aos.css";
 		</SectionContainer>
 
 		<SectionContainer id="sobreMi" class="pb-20 relative">
-
+			<div class="hidden lg:block section-title">SOBRE MI</div>
 			<h3 class="text-xl
 			lg:text-2xl font-semibold mb-6
 			flex items-center gap-x-2">
-				<AboutMeIcon/>
+				<img src="/svg/yoop.svg" alt="Icono" 
+				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
 				Sobre mi
 			</h3>
 			<AboutMe />
-
 		</SectionContainer>
 		
 	</main>
@@ -145,13 +147,14 @@ import "aos/dist/aos.css";
 	.section-title {
 		font-size: 7rem;
 		font-weight: bold;
-		color: rgba(255, 255, 255, 0.02);
+		color: rgba(150, 150, 150, 0.1);
 		text-align: center;
 		position: absolute;
 		top: -50px;
 		left: 50%;
 		transform: translateX(-50%);
 		z-index: -1;
+		white-space: nowrap;
+		filter: blur(0.5px); 
 	}
-
  </style>
