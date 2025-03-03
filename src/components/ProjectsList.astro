@@ -1,0 +1,225 @@
+---
+import Card from "../components/ProjectCard.astro";
+
+const proyectos = [
+  {
+    image: "/img/projects/astro-pokedex.png",
+    title: "GigaChad Pokédex",
+    description:
+      "Una Pokédex interactiva creada con Astro, React y HTMX, donde los Pokémon se cargan dinámicamente al hacer scroll. Permite buscar por nombre o ID, ver detalles y jugar a adivinar el Pokémon.",
+    technologies: ["Astro", "React", "HTMX", "Tailwind CSS"],
+    github: "https://github.com/emmalanza/pokedex-astro",
+    demo: "https://astropokedex.netlify.app/",
+  },
+  {
+    image: "/img/projects/filmin-clone.png",
+    title: "Clon de Filmin",
+    description: 
+    "Clon de la plataforma de streaming Filmin, desarrollada en equipo durante el bootcamp de Factoría F5. El proyecto se ha desarrollado con React y la API de TMDB. Incluye carrouseles interactivos y una interfaz moderna con Tailwind CSS para explorar películas y series.",
+    technologies: ["React", "Swiper", "Tailwind CSS"],
+    github: "https://github.com/Akalchi/filminClone",
+    demo: "https://github.com/Akalchi/filminClone?tab=readme-ov-file#result",
+  },
+  {
+    image: "/img/projects/instrumentos.png",
+    title: "Instrumentos App",
+    description: 
+    "Aplicación web interactiva, desarrollada en equipo durante el bootcamp de Factoría F5. La aplicación que permite a los usuarios tocar y grabar música utilizando instrunentos virtuales.",
+    technologies: ["React", "Java", "Tailwind CSS"],
+    github: "https://github.com/emmalanza/instrumentos-app",
+    demo: "",
+  },
+];
+---
+
+<div class="carousel-container">
+  <div class="carousel-wrapper">
+    <div class="carousel" data-items={proyectos.length}>
+      {
+        proyectos.map((proyecto) => (
+          <div class="carousel-item">
+            <Card
+              image={proyecto.image}
+              title={proyecto.title}
+              description={proyecto.description}
+              github={proyecto.github}
+              demo={proyecto.demo}
+              technologies={proyecto.technologies}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Botones de navegación -->
+  <button class="carousel-button prev">&#10094;</button>
+  <button class="carousel-button next">&#10095;</button>
+
+  <!-- Indicadores -->
+  <div class="carousel-indicators">
+    {proyectos.map((_, index) => <span class="indicator" data-index={index} />)}
+  </div>
+</div>
+
+<style>
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  @media (max-width: 639px) {
+  .carousel-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+  .carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+  }
+
+  .carousel-item {
+    min-width: 100%;
+    padding: 12px;
+  }
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(165, 16, 128, 0.7);
+    border: none;
+    padding: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition:
+      background 0.3s ease,
+      visibility 0.3s ease,
+      opacity 0.3s ease;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1; /* Asegura que los botones estén visibles inicialmente */
+  }
+
+  @media (max-width: 639px) {
+    .carousel-button {
+      width: 24px;  /* Ajustar el tamaño en pantallas pequeñas */
+      height: 24px;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .carousel-button.prev {
+    left: -15px !important;
+    }
+
+    .carousel-button.next {
+      right: -15px !important;
+    }
+  }
+
+  .carousel-button.prev {
+    left: 10px;
+  }
+  .carousel-button.next {
+    right: 10px;
+  }
+
+  .carousel-button:disabled {
+    visibility: hidden; /* Oculta los botones cuando están deshabilitados */
+    opacity: 0; /* Desaparece suavemente */
+  }
+
+  .carousel-button:hover {
+    color: rgb(255, 46, 204, 0.7);
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .indicator {
+    width: 12px;
+    height: 12px;
+    margin: 5px;
+    background-color: #a51080;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background 0.3s ease;
+  }
+
+  .indicator.active {
+    background-color: #ff2ecc;
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let currentIndex = 0;
+    const carousel = document.querySelector(".carousel");
+    const prevButton = document.querySelector(".carousel-button.prev");
+    const nextButton = document.querySelector(".carousel-button.next");
+    const indicators = document.querySelectorAll(".indicator");
+    const totalItems = parseInt((carousel as HTMLElement).dataset.items || "0");
+
+    function updateCarousel() {
+      // Asegurarse de que el índice esté dentro de los límites antes de mover el carrusel
+      currentIndex = Math.max(0, Math.min(currentIndex, totalItems - 1));
+      (carousel as HTMLElement).style.transform =
+        `translateX(-${currentIndex * 100}%)`;
+
+      // Actualizar los indicadores
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle("active", index === currentIndex);
+      });
+
+      // Deshabilitar los botones según el índice actual
+      (prevButton as HTMLButtonElement).disabled = currentIndex === 0;
+      (nextButton as HTMLButtonElement).disabled =
+        currentIndex === totalItems - 1;
+    }
+
+    function moveCarousel(direction: number) {
+      // Mover el carrusel en la dirección solicitada
+      const newIndex = currentIndex + direction;
+      if (newIndex >= 0 && newIndex < totalItems) {
+        currentIndex = newIndex;
+        updateCarousel();
+      }
+    }
+
+    prevButton!.addEventListener("click", () => moveCarousel(-1));
+    nextButton!.addEventListener("click", () => moveCarousel(1));
+
+    // Eventos para los indicadores
+    indicators.forEach((indicator) => {
+      indicator.addEventListener("click", (e) => {
+        currentIndex = parseInt(
+          (e.target as HTMLElement)?.dataset.index ?? "0",
+        );
+        updateCarousel();
+      });
+    });
+
+    // Inicialización del carrusel
+    updateCarousel();
+  });
+</script>
