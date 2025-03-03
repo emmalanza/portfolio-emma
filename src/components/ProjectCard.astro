@@ -5,7 +5,7 @@ const { image, title, description, github, demo, technologies } = Astro.props;
   
   <h3 class="font-bold text-xl text-gray-800 dark:text-white text-center">{title}</h3>
   
-  <img class="w-full max-w-[200px] md:max-h-[350px] object-cover rounded-lg" src={image} alt={title} loading="lazy" />
+  <img class="w-full h-[200px] md:h-[320px] object-cover rounded-lg" src={image} alt={title} loading="lazy" />
   
   <div class="flex flex-wrap gap-2 mt-2">
     {technologies.map((tech: unknown) => (
