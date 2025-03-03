@@ -13,11 +13,12 @@ import LinkedInIcon from '../icons/LinkedIn.astro';
 import EmailIcon from '../icons/Email.astro';
 
 import "aos/dist/aos.css"; 
+import ProjectsList from '../components/ProjectsList.astro';
 
 ---
 
 <Layout title="Portfolio de Emma - Desarrolladora y Programadora Full Stack"
-		description='Desarrolladora Full Stack en crecimiento'>
+		description='Desarrolladora Full Stack'>
 
 	<script>
 		import { aosInit } from "../js/aos";
@@ -28,12 +29,12 @@ import "aos/dist/aos.css";
 	<SectionContainer class="mt-20 mb-28">
 
 		<div  data-aos="flip-left" data-aos-delay="200">
-			<img id="banner" src="" alt="Banner" loading="lazy" class="relative w-full">
+			<img id="banner" src="/img/banner.png" alt="Banner" loading="lazy" class="relative w-full">
 			<img class="absolute md:-bottom-16 md:left-10 -bottom-8 left-5
 			md:border-4 border-2 border-white
 			rounded-full md:w-36 md:h-36 w-16 h-16"
 			src="/img/YOP.jpeg" alt="Una foto de Emma" loading="lazy">
-			<a href="https://www.linkedin.com/in/emma-lanza-089861150/" 
+			<a href="https://www.linkedin.com/in/emma-lanza-m/" 
 			target="_blank" rel="noopener noreferrer"
 			class="absolute md:-bottom-12 md:right-10 -bottom-8 right-5"> 
 				<Badge>Disponible para trabajar </Badge>
@@ -51,7 +52,7 @@ import "aos/dist/aos.css";
 			</h2>
 
 			<nav class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 ">
-				<SocialPill href="https://www.linkedin.com/in/emma-lanza-089861150/">
+				<SocialPill href="https://www.linkedin.com/in/emma-lanza-m/">
 					<LinkedInIcon/>
 					LinkedIn
 				</SocialPill>
@@ -72,11 +73,25 @@ import "aos/dist/aos.css";
 
 	<main class="md:ml-10">
 
+		<SectionContainer id="proyectos" class="pb-20 relative">
+			<div class="hidden lg:block section-title">PROYECTOS</div>
+		
+			<h3 class="text-xl
+			md:text-4xl font-semibold mb-6
+			flex items-center gap-x-2">
+				<img src="/svg/projects.svg" alt="Icono" 
+				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
+				Mis Proyectos
+			</h3>
+			<ProjectsList />
+
+		</SectionContainer>
+
 		<SectionContainer id="experiencia" class="pb-20 relative">
 			<div class="hidden lg:block section-title">EXPERIENCIA</div>
 		
 			<h3 class="text-xl
-			lg:text-2xl font-semibold mb-6
+			md:text-4xl font-semibold mb-6
 			flex items-center gap-x-2">
 				<img src="/svg/work.svg" alt="Icono" 
 				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
@@ -90,7 +105,7 @@ import "aos/dist/aos.css";
 			<div class="hidden lg:block section-title">EDUCACIÓN</div>
 		
 			<h3 class="text-xl
-			lg:text-2xl font-semibold mb-6
+			md:text-4xl font-semibold mb-6
 			flex items-center gap-x-2">
 				<img src="/svg/studies.svg" alt="Icono" 
 				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
@@ -104,7 +119,7 @@ import "aos/dist/aos.css";
 			<div class="hidden lg:block section-title">CERTIFICACIONES</div>
 		
 			<h3 class="text-xl
-			lg:text-2xl font-semibold mb-6
+			md:text-4xl font-semibold mb-6
 			flex items-center gap-x-2">
 				<img src="/svg/certificate.svg" alt="Icono" 
 				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
@@ -117,7 +132,7 @@ import "aos/dist/aos.css";
 		<SectionContainer id="tecnologias" class="pb-20 relative">
 			<div class="hidden lg:block section-title">TECNOLOGÍAS</div>
 			<h3 class="text-xl
-			lg:text-2xl font-semibold mb-6
+			md:text-4xl font-semibold mb-6
 			flex items-center gap-x-2">
 				<img src="/svg/tech.svg" alt="Icono" 
 				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
@@ -130,7 +145,7 @@ import "aos/dist/aos.css";
 		<SectionContainer id="sobreMi" class="pb-20 relative">
 			<div class="hidden lg:block section-title">SOBRE MI</div>
 			<h3 class="text-xl
-			lg:text-2xl font-semibold mb-6
+			md:text-4xl font-semibold mb-6
 			flex items-center gap-x-2">
 				<img src="/svg/yoop.svg" alt="Icono" 
 				style="mask-image: linear-gradient(to bottom, black 10%, transparent 100%);">
@@ -140,6 +155,7 @@ import "aos/dist/aos.css";
 		</SectionContainer>
 		
 	</main>
+	
 </Layout>
  
 
