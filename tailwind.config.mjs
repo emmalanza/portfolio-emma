@@ -4,6 +4,10 @@ export default {
 	darkMode: 'class', 
 	theme: {
 		extend: {
+			fontFamily: {
+				onest: ['Onest Variable', 'sans-serif'],  
+				banger: ['Bangers', 'sans-serif'],  
+			  },
 			colors: {
 
 				'pink-dark': '#a51080', 

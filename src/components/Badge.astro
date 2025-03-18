@@ -1,5 +1,32 @@
-<span class="dark:bg-pink-200/60 dark:text-pink-100/70 bg-pink-dark text-white
+<span id="badge" class="dark:bg-pink-200/60 dark:text-pink-100/70 bg-pink-dark text-white
 text-xs font-thin me-2 px-2.5 py-1.5
 rounded-full border dark:border-pink-100/90 border-white/90">
 <slot />
 </span>
+
+<style>
+#badge {
+  z-index: 1;
+  display: inline-block; /* Asegura que transform funcione */
+}
+
+#badge:hover {
+  cursor: pointer;
+  animation: jelly 0.5s ease-in-out !important;
+}
+
+@keyframes jelly {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+</style>
