@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { ViewTransitions } from "astro:transitions";
-import '@fontsource-variable/onest';
+import "../styles/styles.css";
 
 interface Props {
 	title: string;
@@ -13,7 +13,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="font-onest">
 	<head>
 		<ViewTransitions />
 		<meta charset="UTF-8" />
@@ -42,7 +42,6 @@ const { title, description } = Astro.props;
 <style is:global>
 
 	html {
-		font-family: 'Onest Variable',system-ui, sans-serif;
 		scroll-behavior: smooth;
 	}
 
