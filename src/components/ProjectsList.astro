@@ -3,28 +3,38 @@ import Card from "../components/ProjectCard.astro";
 
 const proyectos = [
   {
-    image: "/img/projects/astro-pokedex.png",
-    title: "Astro Pokédex",
+    title: "Card Matcher Front",
     description:
-      "Una Pokédex interactiva creada con Astro, React y HTMX, donde los Pokémon se cargan dinámicamente al hacer scroll. Permite buscar por nombre o ID, ver detalles y jugar a adivinar el Pokémon.",
+      "Frontend de la aplicación de gestión de colecciones de cartas intercambiables. Permite interactuar con el backend para el registro y el login de usuarios y para gestionar cartas y colecciones.",
+    technologies: ["React", "Tailwind CSS", "Axios"],
+    github: "https://github.com/emmalanza/card-matcher-frontend",
+  },
+  {
+    title: "Card Matcher Back",
+    description:
+      "Backend de la aplicación, desarrollado con Java, Spring Boot, Hibernate y JPA. Gestiona la lógica de negocio y la persistencia de datos a través de una API.",
+    technologies: ["Java", "Spring Boot", "Hibernate", "JPA", "XAMPP"],
+    github: "https://github.com/emmalanza/card-matcher-backend",
+  },
+  {
+    title: "Pokédex",
+    description:
+      "Una Pokédex interactiva donde los Pokémon se cargan dinámicamente al hacer scroll. Permite buscar por nombre o ID, ver detalles y jugar a adivinar el Pokémon.",
     technologies: ["Astro", "React", "HTMX", "Tailwind CSS"],
     github: "https://github.com/emmalanza/pokedex-astro",
     demo: "https://astropokedex.netlify.app/",
   },
   {
-    image: "/img/projects/filmin-clone.png",
     title: "Clon de Filmin",
     description: 
     "Clon de la plataforma de streaming Filmin, desarrollada en equipo durante el bootcamp de Factoría F5. El proyecto se ha desarrollado con React y la API de TMDB. Incluye carruseles interactivos y una interfaz moderna con Tailwind CSS para explorar películas y series.",
     technologies: ["React", "Swiper", "Tailwind CSS"],
     github: "https://github.com/Akalchi/filminClone",
-    demo: "https://github.com/Akalchi/filminClone?tab=readme-ov-file#result",
   },
   {
-    image: "/img/projects/instrumentos.png",
     title: "Instrumentos App",
     description: 
-    "Aplicación web interactiva, desarrollada en equipo durante el bootcamp de Factoría F5. La aplicación que permite a los usuarios tocar y grabar música utilizando instrunentos virtuales.",
+    "Aplicación web interactiva, desarrollada en equipo durante el bootcamp de Factoría F5. La aplicación permite a los usuarios tocar y grabar música utilizando instrumentos virtuales.",
     technologies: ["React", "Java", "Tailwind CSS"],
     github: "https://github.com/emmalanza/instrumentos-app",
     demo: "",
@@ -39,7 +49,6 @@ const proyectos = [
         proyectos.map((proyecto) => (
           <div class="carousel-item">
             <Card
-              image={proyecto.image}
               title={proyecto.title}
               description={proyecto.description}
               github={proyecto.github}

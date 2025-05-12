@@ -1,6 +1,16 @@
 ---
 const CERTIFICATIONS = [
     {
+        title: "Especialización en AWS (Amazon Web Services)",
+        entity: "Factoría F5",
+        url: "En curso"
+    },
+    {
+        title: "Foundations of User Experience (UX) Design",
+        entity: "Google",
+        url: "En curso"
+    },
+    {
         title: "The Complete 2024 Web Development BootCamp",
         entity: "Udemy",
         url: "https://www.udemy.com/certificate/UC-a0528423-bdbd-4307-8e96-278ac2589ac7/"
@@ -15,25 +25,27 @@ const CERTIFICATIONS = [
 
 
 <ol class="relative border-l border-gray-200 ml-3">
-    {
-      CERTIFICATIONS.map((c) => (
-        <span class="absolute flex items-center justify-center w-4 h-4 -start-[8.55px]
-        md:w-8 md:h-8 rounded-full
-        md:-start-4 bg-pink-light">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#ffffff" viewBox="0 0 256 256"><path d="M208,36H180V24a4,4,0,0,0-8,0V36H84V24a4,4,0,0,0-8,0V36H48A12,12,0,0,0,36,48V208a12,12,0,0,0,12,12H208a12,12,0,0,0,12-12V48A12,12,0,0,0,208,36ZM48,44H76V56a4,4,0,0,0,8,0V44h88V56a4,4,0,0,0,8,0V44h28a4,4,0,0,1,4,4V84H44V48A4,4,0,0,1,48,44ZM208,212H48a4,4,0,0,1-4-4V92H212V208A4,4,0,0,1,208,212Zm-72-80a8,8,0,1,1-8-8A8,8,0,0,1,136,132Zm44,0a8,8,0,1,1-8-8A8,8,0,0,1,180,132ZM92,172a8,8,0,1,1-8-8A8,8,0,0,1,92,172Zm44,0a8,8,0,1,1-8-8A8,8,0,0,1,136,172Zm44,0a8,8,0,1,1-8-8A8,8,0,0,1,180,172Z"></path></svg>
-        </span>
-        <li  class="mb-10 ms-6">
-          <h3 class="text-xl font-semibold">{c.title}</h3>
-          <span class="block text-gray-600">{c.entity}</span>
-          <a 
-            href={c.url} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="dark:text-bright-yellow/80 text-yellow hover:underline transition transform duration-200"
-          >
-            See Certification
-          </a>
-        </li>
-      ))
-    }
-  </ol>
+  {CERTIFICATIONS.map((c) => (
+    <span class="absolute flex items-center justify-center w-4 h-4 -start-[8.55px] md:w-8 md:h-8 rounded-full md:-start-4 bg-pink-light">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#ffffff" viewBox="0 0 256 256">
+        <path d="M208,36H180V24a4,4,0,0,0-8,0V36H84V24a4,4,0,0,0-8,0V36H48A12,12,0,0,0,36,48V208a12,12,0,0,0,12,12H208a12,12,0,0,0,12-12V48A12,12,0,0,0,208,36ZM48,44H76V56a4,4,0,0,0,8,0V44h88V56a4,4,0,0,0,8,0V44h28a4,4,0,0,1,4,4V84H44V48A4,4,0,0,1,48,44ZM208,212H48a4,4,0,0,1-4-4V92H212V208A4,4,0,0,1,208,212Zm-72-80a8,8,0,1,1-8-8A8,8,0,0,1,136,132Zm44,0a8,8,0,1,1-8-8A8,8,0,0,1,180,132ZM92,172a8,8,0,1,1-8-8A8,8,0,0,1,92,172Zm44,0a8,8,0,1,1-8-8A8,8,0,0,1,136,172Zm44,0a8,8,0,1,1-8-8A8,8,0,0,1,180,172Z"></path>
+      </svg>
+    </span>
+    <li class="mb-10 ms-6">
+      <h3 class="text-xl font-semibold">{c.title}</h3>
+      <span class="block text-gray-600">{c.entity}</span>
+      {c.url === "En curso" ? (
+        <span class="italic text-gray-500">{c.url}</span>
+      ) : (
+        <a
+          href={c.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="dark:text-bright-yellow/80 text-yellow hover:underline transition transform duration-200"
+        >
+          See Certification
+        </a>
+      )}
+    </li>
+  ))}
+</ol>
