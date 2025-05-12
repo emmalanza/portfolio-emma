@@ -34,11 +34,10 @@ import ProjectsList from '../components/ProjectsList.astro';
 			md:border-4 border-2 border-white
 			rounded-full md:w-36 md:h-36 w-20 h-20"
 			src="/img/YOP.jpeg" alt="Una foto de Emma" loading="lazy">
-			<a href="https://www.linkedin.com/in/emma-lanza-m/" 
-			target="_blank" rel="noopener noreferrer"
+			<div
 			class="absolute md:-bottom-12 md:right-10 -bottom-9 right-5"> 
-				<Badge>Disponible para trabajar </Badge>
-			</a>
+				<Badge/> 
+			</div>
 		</div>
 
 		<div class="mt-20 md:ml-10" data-aos="flip-down" data-aos-delay="600">
@@ -162,7 +161,6 @@ import ProjectsList from '../components/ProjectsList.astro';
  <style>
 	.section-title {
 		font-size: 10rem;
-		/* font-weight: bold; */
 		color: rgba(150, 150, 150, 0.1);
 		text-align: center;
 		position: absolute;
