@@ -28,7 +28,7 @@ const { title, description, github, demo, technologies } = Astro.props;
   
     {demo && demo !== "" && (
       <a href={demo} target="_blank" rel="noopener noreferrer"
-         class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200"
+         class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-200 hover:scale-110 transition transform duration-200"
          title="Ver demo del proyecto">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
